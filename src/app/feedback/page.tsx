@@ -2,15 +2,23 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { IFeedback } from '@/models/Feedback';
+
+
+interface FeedbackItem {
+  _id: string;
+  name: string;
+  feedback: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 const Feedback: React.FC = () => {
-  const [feedbacks, setFeedbacks] = useState<IFeedback[]>([]);
+  const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]);
 
   useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
-        const response = await axios.get<IFeedback[]>('/api/feedback');
+        const response = await axios.get<FeedbackItem[]>('/api/feedback');
         setFeedbacks(response.data);
       } catch (error) {
         console.error('Error fetching feedbacks:', error);

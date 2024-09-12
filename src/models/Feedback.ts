@@ -25,3 +25,12 @@ const FeedbackSchema: Schema = new Schema({
 const Feedback: Model<IFeedback> = mongoose.models.Feedback || mongoose.model<IFeedback>('Feedback', FeedbackSchema);
 
 export default Feedback;
+
+
+export type FeedbackItem = {
+  _id: string;
+  name: string;
+  feedback: string;
+  createdAt: string;
+  updatedAt: string;
+};
